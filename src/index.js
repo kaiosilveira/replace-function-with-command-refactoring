@@ -11,11 +11,11 @@ export class Scorer {
 
   execute() {
     this._result = 0;
-    let healthLevel = 0;
+    this._healthLevel = 0;
     let highMedicalRiskFlag = false;
 
     if (this._medicalExam.isSmoker) {
-      healthLevel += 10;
+      this._healthLevel += 10;
       highMedicalRiskFlag = true;
     }
 
@@ -26,7 +26,7 @@ export class Scorer {
     }
 
     // lots more code like this
-    this._result -= Math.max(healthLevel - 5, 0);
+    this._result -= Math.max(this._healthLevel - 5, 0);
 
     return this._result;
   }
