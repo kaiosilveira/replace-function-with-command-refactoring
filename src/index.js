@@ -10,7 +10,7 @@ export class Scorer {
   }
 
   execute() {
-    let result = 0;
+    this._result = 0;
     let healthLevel = 0;
     let highMedicalRiskFlag = false;
 
@@ -22,12 +22,12 @@ export class Scorer {
     let certificationGrade = 'regular';
     if (this._scoringGuide.stateWithLowCertification(this._candidate.originState)) {
       certificationGrade = 'low';
-      result -= 5;
+      this._result -= 5;
     }
 
     // lots more code like this
-    result -= Math.max(healthLevel - 5, 0);
+    this._result -= Math.max(healthLevel - 5, 0);
 
-    return result;
+    return this._result;
   }
 }
