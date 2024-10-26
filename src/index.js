@@ -12,11 +12,11 @@ export class Scorer {
   execute() {
     this._result = 0;
     this._healthLevel = 0;
-    let highMedicalRiskFlag = false;
+    this._highMedicalRiskFlag = false;
 
     if (this._medicalExam.isSmoker) {
       this._healthLevel += 10;
-      highMedicalRiskFlag = true;
+      this._highMedicalRiskFlag = true;
     }
 
     let certificationGrade = 'regular';
