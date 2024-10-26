@@ -19,9 +19,9 @@ export class Scorer {
       this._highMedicalRiskFlag = true;
     }
 
-    let certificationGrade = 'regular';
+    this._certificationGrade = 'regular';
     if (this._scoringGuide.stateWithLowCertification(this._candidate.originState)) {
-      certificationGrade = 'low';
+      this._certificationGrade = 'low';
       this._result -= 5;
     }
 
