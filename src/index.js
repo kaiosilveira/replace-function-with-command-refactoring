@@ -1,14 +1,15 @@
 export function score(candidate, medicalExam, scoringGuide) {
-  return new Scorer(candidate, medicalExam).execute(scoringGuide);
+  return new Scorer(candidate, medicalExam, scoringGuide).execute();
 }
 
 export class Scorer {
-  constructor(candidate, medicalExam) {
+  constructor(candidate, medicalExam, scoringGuide) {
     this._candidate = candidate;
     this._medicalExam = medicalExam;
+    this._scoringGuide = scoringGuide;
   }
 
-  execute(scoringGuide) {
+  execute() {
     let result = 0;
     let healthLevel = 0;
     let highMedicalRiskFlag = false;
@@ -19,7 +20,7 @@ export class Scorer {
     }
 
     let certificationGrade = 'regular';
-    if (scoringGuide.stateWithLowCertification(this._candidate.originState)) {
+    if (this._scoringGuide.stateWithLowCertification(this._candidate.originState)) {
       certificationGrade = 'low';
       result -= 5;
     }
