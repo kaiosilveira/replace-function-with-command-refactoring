@@ -40,8 +40,8 @@ describe('Scorer', () => {
     const medicalExam = { isSmoker: false };
     const scoringGuide = { stateWithLowCertification: () => false };
 
-    const scorer = new Scorer(candidate);
-    expect(scorer.execute(medicalExam, scoringGuide)).toBe(0);
+    const scorer = new Scorer(candidate, medicalExam);
+    expect(scorer.execute(scoringGuide)).toBe(0);
   });
 
   it('should return -5 if candidate is not a smoker and has a low certification grade', () => {
@@ -49,8 +49,8 @@ describe('Scorer', () => {
     const medicalExam = { isSmoker: false };
     const scoringGuide = { stateWithLowCertification: () => true };
 
-    const scorer = new Scorer(candidate);
-    expect(scorer.execute(medicalExam, scoringGuide)).toBe(-5);
+    const scorer = new Scorer(candidate, medicalExam);
+    expect(scorer.execute(scoringGuide)).toBe(-5);
   });
 
   it('should return -5 if candidate is a smoker and has a regular certification grade', () => {
@@ -58,8 +58,8 @@ describe('Scorer', () => {
     const medicalExam = { isSmoker: true };
     const scoringGuide = { stateWithLowCertification: () => false };
 
-    const scorer = new Scorer(candidate);
-    expect(scorer.execute(medicalExam, scoringGuide)).toBe(-5);
+    const scorer = new Scorer(candidate, medicalExam);
+    expect(scorer.execute(scoringGuide)).toBe(-5);
   });
 
   it('should return -10 if candidate is a smoker and has a low certification grade', () => {
@@ -67,7 +67,7 @@ describe('Scorer', () => {
     const medicalExam = { isSmoker: true };
     const scoringGuide = { stateWithLowCertification: () => true };
 
-    const scorer = new Scorer(candidate);
-    expect(scorer.execute(medicalExam, scoringGuide)).toBe(-10);
+    const scorer = new Scorer(candidate, medicalExam);
+    expect(scorer.execute(scoringGuide)).toBe(-10);
   });
 });

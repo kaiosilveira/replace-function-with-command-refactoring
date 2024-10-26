@@ -1,18 +1,19 @@
 export function score(candidate, medicalExam, scoringGuide) {
-  return new Scorer(candidate).execute(medicalExam, scoringGuide);
+  return new Scorer(candidate, medicalExam).execute(scoringGuide);
 }
 
 export class Scorer {
-  constructor(candidate) {
+  constructor(candidate, medicalExam) {
     this._candidate = candidate;
+    this._medicalExam = medicalExam;
   }
 
-  execute(medicalExam, scoringGuide) {
+  execute(scoringGuide) {
     let result = 0;
     let healthLevel = 0;
     let highMedicalRiskFlag = false;
 
-    if (medicalExam.isSmoker) {
+    if (this._medicalExam.isSmoker) {
       healthLevel += 10;
       highMedicalRiskFlag = true;
     }
